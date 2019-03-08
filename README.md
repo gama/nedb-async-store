@@ -8,7 +8,7 @@ Installation
 ============
 Install with yarn:
 
-`$ yarn install`
+`$ yarn add nedb-async-store`
 
 
 Usage
