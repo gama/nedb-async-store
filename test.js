@@ -39,6 +39,21 @@ describe('constructor & loadDatabase', () => {
         assert(store.indexes._id.tree.tree.data.length > 0)
     })
 
+    it('should construct a persisted DataStore successfully with promisified static method', async () => {
+        const store = await NedbAsyncStore.new({filename: tmpfile})
+
+        assert.ok(store)
+        assert.ok(store.executor)
+        assert.equal(store.filename, tmpfile)
+        assert.equal(store.inMemoryOnly, false)
+        assert.equal(store.autoload, false)
+        assert.equal(store.timestampData, false)
+        assert.equal(store.indexes._id.tree.tree.data.length, 0)
+
+        await store.loadDatabase()
+        assert(store.indexes._id.tree.tree.data.length > 0)
+    })
+
     it('should construct a persisted, autoloaded DataStore successfully with promisified static method', async () => {
         const store = await NedbAsyncStore.new({filename: tmpfile, autoload: true})
 
@@ -50,7 +65,6 @@ describe('constructor & loadDatabase', () => {
         assert.equal(store.timestampData, false)
         assert(store.indexes._id.tree.tree.data.length > 0)
     })
-
 })
 
 describe('crud', () => {

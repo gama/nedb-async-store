@@ -15,8 +15,10 @@ class NedbAsyncStore extends NedbDatastore {
 
     static async new(options = {}) {
         return new Promise((resolve, reject) => {
-            const onload = options.autoload && ((err) => err ? reject(err) : resolve(instance))
-            var instance = new this({ ...options, onload: onload })
+            options.onload = options.autoload && ((err) => err ? reject(err) : resolve(instance))
+            var instance = new this(options)
+            if (!options.autoload)
+                resolve(instance)
         })
     }
 
@@ -44,6 +46,6 @@ const PROMISIFIABLE_METHODS = [
     'remove', 'ensureIndex', 'removeIndex'
 ]
 for (let method of PROMISIFIABLE_METHODS)
-    NedbAsyncStore.prototype[method] = promisify(NedbDatastore.prototype[method]) 
+    NedbAsyncStore.prototype[method] = promisify(NedbDatastore.prototype[method])
 
 module.exports = NedbAsyncStore
