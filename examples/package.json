@@ -1,0 +1,12 @@
+{
+  "name": "nedb-async-store-examples",
+  "version": "0.1.0",
+  "description": "Snippets with examples of NedbAsyncStore usage",
+  "main": "index.js",
+  "author": "Gustavo Gama",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "nedb-async-store": "../"
+  }
+}
