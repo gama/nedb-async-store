@@ -1,6 +1,6 @@
 {
   "name": "nedb-async-store",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple wrapper for NeDB's DataStore, providing easy class-based extensibility and a promisified API",
   "main": "index.js",
   "repository": "https://github.com/gama/nedb-async-store",
@@ -9,6 +9,9 @@
   "engines": {
     "node": ">=8.0.0"
   },
+  "files": [
+      "index.js"
+  ],
   "dependencies": {
     "nedb": "^1.8.0"
   },
